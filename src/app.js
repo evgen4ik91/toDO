@@ -1,6 +1,6 @@
 import React from 'react';
 import CONST from './constants';
-
+import "./styles/styles.sass";
 
 export class App extends React.Component {
     constructor(props) {
@@ -13,7 +13,8 @@ export class App extends React.Component {
     render() {
         return (
         <div className="container">
-            
+            <h1>HI</h1>
+            <img src="/images/picture.svg" />
         </div>
         );
     }
