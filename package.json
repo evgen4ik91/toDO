@@ -1,42 +1,31 @@
 {
-  "name": "toDOapp",
+  "name": "todoserver",
   "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "description": "server for todo app",
+  "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+    "dev": "nodemon server.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evgen4ik91/toDO.git"
+  },
+  "keywords": [
+    "express",
+    "node.js"
+  ],
   "author": "",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
+  "bugs": {
+    "url": "https://github.com/evgen4ik91/toDO/issues"
+  },
+  "homepage": "https://github.com/evgen4ik91/toDO#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "copy-webpack-plugin": "^4.5.2",
-    "css-loader": "^1.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.9.2",
-    "react-hot-loader": "^4.0.1",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.3"
-  },
-  "dependencies": {
-    "lodash": "^4.17.5",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "nodemon": "^1.18.3"
   }
 }
