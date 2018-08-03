@@ -22,6 +22,14 @@ module.exports = {
             fallback: 'style-loader',
             use: ['css-loader', 'sass-loader']
           })
+      },
+      {
+          test: /\.(jpg|png)$/,
+          loader: 'url-loader?limit=100000'
+      },
+      {
+          test: /\.svg$/,
+          loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },

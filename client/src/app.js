@@ -10,9 +10,6 @@ import "./styles/styles.sass";
 export class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
-        }
     }
 
     render() {
@@ -21,9 +18,11 @@ export class App extends React.Component {
           <div className="row">
             <Sidebar>
               <Title appName={CONST.appName} />
-              <GroupList/>
+              <GroupList groupsList={CONST.groupsList} />
             </Sidebar>
-            <Content />
+            <Content>
+
+            </Content>
           </div>
         </div>
         );

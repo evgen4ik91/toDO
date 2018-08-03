@@ -4,9 +4,10 @@ export class Title extends React.Component {
     constructor(props) {
         super(props);
     }
+
     render() {
       return  (<div className="title">
-                <h1>{this.props.appName}</h1>
+                <img className="title__logo" src="/images/logo.png" alt={this.props.title} />
               </div>)
     }
 }

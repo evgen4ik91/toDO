@@ -20,6 +20,12 @@
   padding-right: 8px
 
 /* main styles */
+html
+  background-color: #008EBB
+body *
+  box-sizing: border-box
+  &:focus
+    outline: none
 #app
   min-height: 100vh
   background-image: linear-gradient(to bottom, #008EBB, #00CBE0)
@@ -27,11 +33,24 @@
   position: relative
   font-family: 'Titillium Web', sans-serif
   font-size: 16px
-  
+  color: #333
+.bright-title
+  font-size: 14px
+  text-transform: uppercase
+  opacity: 0.7
+.bg-contain
+  background-position: center
+  background-repeat: no-repeat
+  background-size: contain
+.bg-cover
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
 
 @import "../components/sidebar/sidebar"
 @import "../components/content/content"
 @import "../components/title/title"
 @import "../components/group-list/group-list"
+@import "../components/task-list/task-list"
 
 @import responsive

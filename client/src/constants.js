@@ -1,3 +1,4 @@
 module.exports = Object.freeze({
-  appName: 'toDO'
+  appName: 'toDO',
+  groupsList: ['work','home','other']
 });
