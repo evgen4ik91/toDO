@@ -8,4 +8,4 @@ app.listen(port, () => {
   console.log('We are live on ' + port);
 });
 
-app.use(express.static('client/dist'))
+app.use(express.static('client/dist'));

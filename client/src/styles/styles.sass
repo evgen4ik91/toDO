@@ -2,15 +2,36 @@
 
 /* grid */
 .container
-  max-width: 900px
+  max-width: 700px
   margin: 0 auto
-  padding-left: 20px
-  padding-right: 20px
+  padding-left: 16px
+  padding-right: 16px
+  &.fluid
+    max-width: none
+    padding-left: 8px
+    padding-right: 8px
 .row
-  margin-left: -10px
-  margin-right: -10px
+  display: flex
+  flex-wrap: wrap
+  margin-left: -8px
+  margin-right: -8px
 .col
-  padding-left: 10px
-  padding-right: 10px
+  padding-left: 8px
+  padding-right: 8px
+
+/* main styles */
+#app
+  min-height: 100vh
+  background-image: linear-gradient(to bottom, #008EBB, #00CBE0)
+  background-size: 100%
+  position: relative
+  font-family: 'Titillium Web', sans-serif
+  font-size: 16px
+  
+
+@import "../components/sidebar/sidebar"
+@import "../components/content/content"
+@import "../components/title/title"
+@import "../components/group-list/group-list"
 
 @import responsive
