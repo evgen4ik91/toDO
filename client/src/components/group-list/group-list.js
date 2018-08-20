@@ -4,12 +4,19 @@ import {GroupItem} from './group-item';
 export class GroupList extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+          itemEditingIndex: null
+        },
+        this.setEditingGroup = this.setEditingGroup.bind(this)
     }
 
-    componentDidMount (){
-      
+    setEditingGroup(i) {
+      this.setState({
+        itemEditingIndex: i
+      },()=>{
+        console.log(this.state.itemEditingIndex,'parent')
+      });
     }
-
 
     render() {
       return (<div className="group-list">
@@ -17,7 +24,7 @@ export class GroupList extends React.Component {
                 <div className="group-list__container">
                   {
                     this.props.groupsList.map((title,i)=>{
-                      return <GroupItem  title={title} key={i} />
+                      return <GroupItem  title={title} key={i} itemIndex={i} isEditing={i === this.state.itemEditingIndex} setEditing={this.setEditingGroup} />
                     })
                   }
                 </div>

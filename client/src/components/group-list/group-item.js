@@ -5,7 +5,7 @@ export class GroupItem extends React.Component {
         super(props);
         this.state = {
           title: this.props.title,
-          isEditing: false,
+          isEditing: this.props.isEditing,
           isDeleting: false
         },
         this.inputRef = React.createRef();
@@ -13,12 +13,19 @@ export class GroupItem extends React.Component {
         this.keyHandler = this.keyHandler.bind(this)
     }
 
+    componentWillReceiveProps() {
+      if (this.props.isEditing !== this.state.isEditing) {
+        let isEditing = this.props.isEditing;
+        this.setState({
+          isEditing: isEditing
+        },()=>{
+          if (isEditing) this.inputRef.current.focus();
+        });
+      }
+    }
+
     enterEditMode (state) {
-      this.setState({
-        isEditing: state
-      }, ()=>{
-        if (state) this.inputRef.current.focus();
-      });
+      this.props.setEditing(state ? this.props.itemIndex : null);
     }
 
     keyHandler (e) {
