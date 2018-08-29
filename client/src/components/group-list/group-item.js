@@ -17,7 +17,7 @@ export class GroupItem extends React.Component {
       if (this.props.isEditing !== this.state.isEditing) {
         let isEditing = this.props.isEditing;
         this.setState({
-          isEditing: isEditing
+          isEditing
         },()=>{
           if (isEditing) this.inputRef.current.focus();
         });
@@ -41,16 +41,32 @@ export class GroupItem extends React.Component {
       let isEditing = this.state.isEditing;
       let text;
       if (isEditing) {
-        text = <input className="group-list__item-input" type="text" defaultValue={this.state.title} onKeyPress={this.keyHandler} ref={this.inputRef}/>;
+        text = <input 
+                  className="group-list__item-input"
+                  type="text"
+                  defaultValue={this.state.title}
+                  onKeyPress={this.keyHandler}
+                  ref={this.inputRef}
+                />;
       } else {
-        text = <span className="group-list__item-title" onDoubleClick={()=>this.enterEditMode(true)}>
+        text = <span 
+                className="group-list__item-title"
+                onDoubleClick={()=>this.enterEditMode(true)}
+              >
                 {this.state.title}
               </span>;
       };
       return (<div className={['group-list__item', isEditing ? 'is-editing' : '' ].join(' ')}>
                 {text}
-                <button className="group-list__item-btn edit bg-contain" title="Edit group" onClick={()=>this.enterEditMode(isEditing ? false : true)}></button>
-                <button className="group-list__item-btn remove bg-contain" title="Remove group"></button>
+                <button
+                  className="group-list__item-btn edit bg-contain"
+                  title="Edit group"
+                  onClick={()=>this.enterEditMode(isEditing ? false : true)}
+                ></button>
+                <button
+                  className="group-list__item-btn remove bg-contain"
+                  title="Remove group"
+                ></button>
               </div>)
     }
 }

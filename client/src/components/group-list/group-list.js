@@ -19,16 +19,24 @@ export class GroupList extends React.Component {
     }
 
     render() {
-      return (<div className="group-list">
+      return (
+              <div className="group-list">
                 <p className="group-list__title bright-title">GROUPS</p>
                 <div className="group-list__container">
                   {
                     this.props.groupsList.map((title,i)=>{
-                      return <GroupItem  title={title} key={i} itemIndex={i} isEditing={i === this.state.itemEditingIndex} setEditing={this.setEditingGroup} />
+                      return <GroupItem  
+                              title={title}
+                              key={i}
+                              itemIndex={i}
+                              isEditing={i === this.state.itemEditingIndex}
+                              setEditing={this.setEditingGroup} 
+                              />
                     })
                   }
                 </div>
                 <button className="group-list__add-btn">Add new</button>
-              </div>)
+              </div>
+              )
     }
 }
