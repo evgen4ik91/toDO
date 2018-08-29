@@ -4,6 +4,7 @@ import {Sidebar} from './components/sidebar/sidebar';
 import {Content} from './components/content/content';
 import {Title} from './components/title/title';
 import {GroupList} from './components/group-list/group-list';
+import {TaskList} from './components/task-list/task-list';
 
 import "./styles/styles.sass";
 
@@ -21,7 +22,7 @@ export class App extends React.Component {
               <GroupList groupsList={CONST.groupsList} />
             </Sidebar>
             <Content>
-
+              <TaskList />
             </Content>
           </div>
         </div>

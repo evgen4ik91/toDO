@@ -35,16 +35,21 @@ export class Sidebar extends React.Component {
     }
 
     render() {
-      let styles = {
+      let stylesSidebar = {
         width: this.state.width + 'px',
         transition: 'width ' + this.state.transitionDuration + 'ms ease-out'
       }
-      return  <div className={['sidebar', this.state.opened ? '' : 'closed'].join(' ')} style={styles}>
-                <button className="sidebar__tgl-btn bg-contain" onClick={this.toggleSidebar}></button>
-                <div className="sidebar__container" style={styles}>
-                  {this.props.children}
+      let stylesSidebarWrapper = {
+        width: this.state.width + 'px',
+      }
+      return  <div className={['sidebar', this.state.opened ? '' : 'closed'].join(' ')} style={stylesSidebar}>
+                <div className="sidebar__wrapper" style={stylesSidebarWrapper}>
+                  <button className="sidebar__tgl-btn bg-contain" onClick={this.toggleSidebar}></button>
+                  <div className="sidebar__container">
+                    {this.props.children}
+                  </div>
+                  <Resizer setSidebarWidth={this.setSidebarWidth} />
                 </div>
-                <Resizer setSidebarWidth={this.setSidebarWidth} />
               </div>
     }
 }
