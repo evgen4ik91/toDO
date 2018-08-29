@@ -7,15 +7,24 @@ export class Sidebar extends React.Component {
         super(props);
         this.state = {
             opened: true,
-            width: CONST.defaultSidebarWidth
+            width: CONST.defaultSidebarWidth,
+            transitionDuration: 0
         }
         this.toggleSidebar = this.toggleSidebar.bind(this),
         this.setSidebarWidth = this.setSidebarWidth.bind(this)
     }
 
     toggleSidebar () {
-      this.setState({
-        opened: this.state.opened ? false : true
+      let context = this;
+      context.setState({
+        opened: context.state.opened ? false : true,
+        transitionDuration: CONST.sidebarTranstion
+      },()=>{
+        setTimeout(() => {
+          context.setState({
+            transitionDuration: 0
+          });
+        }, CONST.sidebarTranstion)
       });
     }
 
@@ -27,7 +36,8 @@ export class Sidebar extends React.Component {
 
     render() {
       let styles = {
-        width: this.state.width + 'px'
+        width: this.state.width + 'px',
+        transition: 'width ' + this.state.transitionDuration + 'ms ease-out'
       }
       return  <div className={['sidebar', this.state.opened ? '' : 'closed'].join(' ')} style={styles}>
                 <button className="sidebar__tgl-btn bg-contain" onClick={this.toggleSidebar}></button>
