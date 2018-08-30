@@ -13,8 +13,6 @@ export class GroupList extends React.Component {
     setEditingGroup(i) {
       this.setState({
         itemEditingIndex: i
-      },()=>{
-        console.log(this.state.itemEditingIndex,'parent')
       });
     }
 
@@ -30,7 +28,7 @@ export class GroupList extends React.Component {
                               key={i}
                               itemIndex={i}
                               isEditing={i === this.state.itemEditingIndex}
-                              setEditing={this.setEditingGroup} 
+                              setEditingGroup={this.setEditingGroup} 
                               />
                     })
                   }
