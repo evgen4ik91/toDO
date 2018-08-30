@@ -5,7 +5,8 @@ export class TaskItem extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        title: this.props.title,
+        text: this.props.text,
+        date: this.props.date,
         isEditing: this.props.isEditing,
         isDeleting: false
       },
@@ -64,23 +65,23 @@ export class TaskItem extends React.Component {
     let isEditing = this.state.isEditing;
     let text;
     if (isEditing) {
-      text = <input 
+      text = <textarea 
                 className="group-list__item-input"
                 type="text"
-                defaultValue={this.state.title}
                 onKeyPress={this.keyHandler}
                 ref={this.inputRef}
-              />;
+              >{this.state.text}</textarea>;
     } else {
       text = <span 
               className="group-list__item-title"
               onDoubleClick={()=>this.enterEditMode(true)}
             >
-              {this.state.title}
+              {this.state.text}
             </span>;
     };
     return (<div className={['group-list__item', isEditing ? 'is-editing' : '' ].join(' ')}>
               {text}
+              <p className="task-list__item-date">{this.state.date}</p>
               <button
                 className="group-list__item-btn edit bg-contain"
                 title="Edit group"

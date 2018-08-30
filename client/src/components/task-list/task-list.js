@@ -16,12 +16,14 @@ export class TaskList extends React.Component {
     }
 
     render() {
-      let tasks = this.props.groupsList
+      let tasks = this.props.taskList
       let tasksRender;
       if (tasks !== undefined) {
-        tasksRender = tasks.map((title,i)=>{
+        tasksRender = Object.keys(tasks).map((key,i)=>{
+          let item = tasks[key];
           return <TaskItem  
-                  title={title}
+                  text={item.text}
+                  date={item.date}
                   key={i}
                   itemIndex={i}
                   isEditing={i === this.state.itemEditingIndex}

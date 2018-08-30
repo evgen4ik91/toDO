@@ -22,7 +22,7 @@ export class App extends React.Component {
               <GroupList groupsList={CONST.groupsList} />
             </Sidebar>
             <Content>
-              <TaskList />
+              <TaskList taskList={CONST.tasksList} />
             </Content>
           </div>
         </div>

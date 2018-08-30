@@ -24,7 +24,7 @@ export class Resizer extends React.Component {
     })
   }
 
-  mouseUpHandler(e) {
+  mouseUpHandler() {
     this.setState({
       isPressed: false
     },()=>{
