@@ -7,19 +7,34 @@ export class GroupItem extends React.Component {
         this.state = {
           title: this.props.title,
           isEditing: this.props.isEditing,
-          isDeleting: false
+          isCurrent: this.props.isCurrent
         },
         this.inputRef = React.createRef();
+        this.setGroupAsCurrent = this.setGroupAsCurrent.bind(this),
         this.enterEditMode = this.enterEditMode.bind(this),
+        this.setInputValue = this.setInputValue.bind(this),
+        this.setFocusToInput = this.setFocusToInput.bind(this),
         this.keyHandler = this.keyHandler.bind(this),
         this.handleClickOutside = this.handleClickOutside.bind(this)
     }
 
-    enterEditMode (state) {
+    setGroupAsCurrent(e) {
+      const domNode = ReactDOM.findDOMNode(this);
+      let isButton = e.target.classList.contains('group-list__item-btn');
+      let isEditing = domNode.classList.contains('is-editing') && domNode.contains(e.target);
+
+      if (!isButton && !isEditing) {
+        this.props.setCurrentGroup(this.props.itemIndex);
+      } else if (!isButton && isEditing) {
+        this.setFocusToInput();
+      }
+    }
+
+    enterEditMode(state) {
       this.props.setEditingGroup(state ? this.props.itemIndex : null);
     }
 
-    keyHandler (e) {
+    keyHandler(e) {
       if (e.key === 'Enter') {
         this.enterEditMode(false);
       }
@@ -33,26 +48,36 @@ export class GroupItem extends React.Component {
       }
     }
 
+    setInputValue(val) {
+      this.setState({  
+        title: val.length ? val : this.state.title
+      });
+    }
+
+    setFocusToInput() {
+      this.inputRef.current.focus();
+    }
+
     componentWillReceiveProps(nextProps) {
       let isEditing = nextProps.isEditing;
       if (isEditing !== this.state.isEditing)  {
         if (!isEditing) {
-          this.setState({  
-            title: this.inputRef.current.value
-          });
+          this.setInputValue(this.inputRef.current.value);
         }
       }
     }
 
     componentWillUpdate(nextProps) {
+      let isCurrent = nextProps.isCurrent;
       let isEditing = nextProps.isEditing;
-      if (isEditing !== this.state.isEditing) {
+      if ((isCurrent !== this.state.isCurrent)||(isEditing !== this.state.isEditing))  {
         this.setState({
-          isEditing
+          isEditing,
+          isCurrent
         },()=>{
           if (isEditing) {
             document.addEventListener('click', this.handleClickOutside, false);
-            this.inputRef.current.focus();
+            this.setFocusToInput();
           } else {
             document.removeEventListener('click', this.handleClickOutside, false);
           }
@@ -62,6 +87,7 @@ export class GroupItem extends React.Component {
 
     render() {
       let isEditing = this.state.isEditing;
+      let isCurrent = this.state.isCurrent;
       let text;
       if (isEditing) {
         text = <input 
@@ -79,7 +105,7 @@ export class GroupItem extends React.Component {
                 {this.state.title}
               </span>;
       };
-      return (<div className={['group-list__item', isEditing ? 'is-editing' : '' ].join(' ')}>
+      return (<div className={['group-list__item', isEditing ? 'is-editing' : '', isCurrent ? 'is-current' : '' ].join(' ')} onClick={this.setGroupAsCurrent}>
                 {text}
                 <button
                   className="group-list__item-btn edit bg-contain"

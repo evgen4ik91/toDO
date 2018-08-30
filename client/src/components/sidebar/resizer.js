@@ -1,5 +1,6 @@
 import React from 'react';
 import CONST from '../../constants';
+import {horizontMoveMode} from '../../handlers';
 
 export class Resizer extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export class Resizer extends React.Component {
     this.setState({
       isPressed: true
     },()=>{
+      horizontMoveMode(true);
       window.addEventListener('mousemove', this.mouseMoveHandler);
       window.addEventListener('mouseup', this.mouseUpHandler);
     })
@@ -25,16 +27,18 @@ export class Resizer extends React.Component {
   mouseUpHandler(e) {
     this.setState({
       isPressed: false
+    },()=>{
+      horizontMoveMode(false);
+      window.removeEventListener('mousemove', this.mouseMoveHandler);
+      window.removeEventListener('mouseup', this.mouseUpHandler);
     });
-    window.removeEventListener('mousemove', this.mouseMoveHandler);
-    window.removeEventListener('mouseup', this.mouseUpHandler);
   }
  
   mouseMoveHandler(e) {
     let minWidth = CONST.minSidebarWidth
     let currentWidth = e.clientX + 3;
     let width = currentWidth < minWidth ? minWidth : currentWidth;
-    this.props.setSidebarWidth(width);
+    this.props.setSidebarWidth(width, currentWidth);
   }
 
   render() {

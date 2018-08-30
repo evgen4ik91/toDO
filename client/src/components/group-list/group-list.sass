@@ -9,21 +9,19 @@
     margin-bottom: 8px
     border-radius: 4px
     position: relative
+    border: 2px solid rgba(255,255,255,0.7)
     &.is-editing
       background-color: rgba(255,255,255,1)
-      &:hover
-        background-color: rgba(255,255,255,1)
       .group-list__item-btn
         visibility: visible
         &.edit
           opacity: 1
-    &:hover
+    &:not(.is-editing):hover
       background-color: rgba(255,255,255,0.9)
       .group-list__item-btn
         visibility: visible
-    &.current
-      background-color: #00CBE0
-      color: #fff
+    &.is-current
+      border-color: #008EBA
     &-title
       cursor: default
       overflow: hidden
@@ -59,3 +57,17 @@
       &.edit
         right: 30px
         background-image: url(../images/edit.svg)
+  &__add-btn
+    display: inline-block
+    border: none
+    background-color: #008EBB
+    color: #fff
+    border-radius: 3px
+    cursor: pointer
+    transition: background-color 300ms
+    &:hover
+      background-color: #03a3d6
+  &__empty-msg
+    margin: 30px 0
+    font-size: 20px
+    opacity: 0.5

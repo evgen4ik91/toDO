@@ -22,10 +22,13 @@
 /* main styles */
 html
   background-color: #008EBB
-body *
-  box-sizing: border-box
-  &:focus
-    outline: none
+body 
+  *
+    box-sizing: border-box
+    &:focus
+      outline: none
+  &.move-horizont
+    cursor: ew-resize
 #app
   min-height: 100vh
   background-image: linear-gradient(to bottom, #008EBB, #00CBE0)
