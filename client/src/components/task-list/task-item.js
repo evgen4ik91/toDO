@@ -39,7 +39,7 @@ export class TaskItem extends React.Component {
     if (isEditing !== this.state.isEditing)  {
       if (!isEditing) {
         this.setState({  
-          title: this.inputRef.current.value
+          text: this.inputRef.current.value
         });
       }
     }
@@ -66,31 +66,46 @@ export class TaskItem extends React.Component {
     let text;
     if (isEditing) {
       text = <textarea 
-                className="group-list__item-input"
+                className="task-list__item-input"
                 type="text"
+                defaultValue={this.state.text}
                 onKeyPress={this.keyHandler}
                 ref={this.inputRef}
-              >{this.state.text}</textarea>;
+              ></textarea>;
     } else {
       text = <span 
-              className="group-list__item-title"
+              className="task-list__item-text"
               onDoubleClick={()=>this.enterEditMode(true)}
             >
               {this.state.text}
             </span>;
     };
-    return (<div className={['group-list__item', isEditing ? 'is-editing' : '' ].join(' ')}>
-              {text}
-              <p className="task-list__item-date">{this.state.date}</p>
-              <button
-                className="group-list__item-btn edit bg-contain"
-                title="Edit group"
-                onClick={()=>this.enterEditMode(isEditing ? false : true)}
-              ></button>
-              <button
-                className="group-list__item-btn remove bg-contain"
-                title="Remove group"
-              ></button>
+    return (<div className={['task-list__item', isEditing ? 'is-editing' : '' ].join(' ')}>
+              <div className="row">
+                <div className="col task-list__item-text-col">
+                  {text}
+                </div>
+                <div className="col task-list__item-done-col">
+                  <button
+                    className="task-list__item-done"
+                    onClick={()=>this.enterEditMode(isEditing ? false : true)}
+                  ></button>
+                </div>
+              </div>
+              <div className="task-list__item-info">
+                <p className="task-list__item-date">{this.state.date}</p>
+                <div className="task-list__item-btn-container">
+                  <button
+                    className="task-list__item-btn edit bg-contain"
+                    title="Edit task"
+                    onClick={()=>this.enterEditMode(isEditing ? false : true)}
+                  ></button>
+                  <button
+                    className="task-list__item-btn remove bg-contain"
+                    title="Remove task"
+                  ></button>
+                </div>
+              </div>
             </div>)
   }
 }

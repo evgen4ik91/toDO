@@ -6,7 +6,8 @@ export class TaskList extends React.Component {
         super(props);
         this.state = {
           itemEditingIndex: null
-        }
+        },
+        this.setEditingTask = this.setEditingTask.bind(this)
     }
     
     setEditingTask(i) {

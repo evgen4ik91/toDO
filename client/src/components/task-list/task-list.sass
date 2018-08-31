@@ -2,7 +2,7 @@
   padding-top: 80px
   padding-bottom: 80px
   &__container
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8)
     padding: 30px 20px
     max-width: 800px
     margin: 0 auto
@@ -11,3 +11,66 @@
     text-align: center
     font-size: 24px
     opacity: 0.5
+  &__item
+    background-color: rgba(255, 255, 255, 0.8)
+    border-radius: 3px
+    margin-bottom: 8px
+    padding: 10px
+    &:last-of-type
+      margin-bottom: 0
+    &.is-editing
+      background-color: rgba(255, 255, 255, 1)
+    &-input,
+    &-text
+      display: block
+      line-height: 20px
+      &-col
+        flex-grow: 1
+    &-input
+      border: none
+      background-color: transparent
+      padding: 0
+      width: 100%
+      resize: none
+    &-done
+      display: block
+      width: 50px
+      height: 50px
+      border-radius: 50%
+      border: 2px solid #008EBB
+      cursor: pointer
+      transition: background-color 400ms
+      &:active
+        opacity: 0.7
+      &.active
+        border-color: #fff
+        background-color: #00FF7F
+
+    &-info
+      width: 100%
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding-top: 5px
+    &-date
+      margin: 0 10px 0 0
+      font-size: 14px
+      opacity: 0.7
+    &-btn
+      display: inline-block
+      width: 20px
+      height: 25px
+      border: none
+      width: 20px
+      height: 25px
+      margin: auto
+      background-color: transparent
+      cursor: pointer
+      opacity: 0.4
+      margin-left: 8px
+      &:hover
+        opacity: 1
+      &.remove
+        background-image: url(../images/trash.svg)
+      &.edit
+        background-image: url(../images/edit.svg)
