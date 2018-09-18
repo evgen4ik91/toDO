@@ -81,7 +81,7 @@ export class TaskItem extends React.Component {
             </span>;
     };
     return (<div className={['task-list__item', isEditing ? 'is-editing' : '' ].join(' ')}>
-              <div className="row">
+              <div className="row task-list__item-row">
                 <div className="col task-list__item-text-col">
                   {text}
                 </div>
