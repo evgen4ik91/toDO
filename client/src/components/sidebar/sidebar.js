@@ -1,6 +1,8 @@
 import React from 'react';
 import CONST from '../../constants';
 import {Resizer} from './resizer';
+import { connect } from 'react-redux';
+import { sidebarIsOpened } from '../../actions/sidebar';
 
 export class Sidebar extends React.Component {
     constructor(props) {
@@ -22,13 +24,13 @@ export class Sidebar extends React.Component {
       
       context.setState({
         opened,
-        transitionDuration: CONST.sidebarTranstion
+        transitionDuration: CONST.sidebarTransition
       },()=>{
         setTimeout(() => {
           context.setState({
             transitionDuration: 0
           });
-        }, CONST.sidebarTranstion)
+        }, CONST.sidebarTransition)
       });
     }
 
@@ -64,3 +66,17 @@ export class Sidebar extends React.Component {
               </div>
     }
 }
+
+const mapStateToProps = (state) => {
+  return {
+      sidebarIsOpened: state.sidebarIsOpened
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sidebarIsOpened: (bool) => dispatch(sidebarIsOpened(bool))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
